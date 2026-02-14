@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Apurv ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    background: radial-gradient(circle at top, #1a001a, #000);
+    overflow:hidden;
+    color:white;
+}
+
+/* tap */
+.tap{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    letter-spacing:2px;
+    cursor:pointer;
+    z-index:5;
+}
+
+/* text */
+.text{
+    position:absolute;
+    width:90%;
+    max-width:600px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    opacity:0;
+    transition:1.5s;
+    line-height:1.6;
+}
+
+.big{
+    font-size:42px;
+    margin-top:20px;
+    text-shadow:0 0 20px #ff4da6;
+}
+
+/* replay */
+.replay{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:10px 20px;
+    border:none;
+    background:#ff4da6;
+    color:white;
+    border-radius:20px;
+    cursor:pointer;
+    display:none;
+}
+
+/* hearts */
+.heart{
+    position:absolute;
+    color:#ff4da6;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    from{transform:translateY(-10vh); opacity:1;}
+    to{transform:translateY(110vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="tap" onclick="startSurprise()">✨ Tap to open ✨</div>
+
+<div class="text" id="text">
+    <p>
+        Happy Birthday Appu ❤️<br><br>
+
+        You are very special to me,<br>
+        and today is not only your birthday<br>
+        but our Valentine’s day too 💖<br><br>
+
+        I know I am not perfect for you,<br>
+        but my love for you is real,<br>
+        pure and from all my heart.<br><br>
+
+        Thank you for being in my life,<br>
+        for your smile, your care,<br>
+        and every little moment we share ✨
+    </p>
+
+    <div class="big">I LOVE YOU APURV ❤️</div>
+</div>
+
+<button class="replay" id="replay" onclick="location.reload()">Replay</button>
+
+<!-- change music name -->
+<audio id="song" src="sitaare.mp3"></audio>
+
+<script>
+function startSurprise(){
+
+    if(navigator.vibrate){
+        navigator.vibrate(200);
+    }
+
+    document.querySelector(".tap").style.display="none";
+
+    document.getElementById("song").play();
+
+    setTimeout(()=>{
+        document.getElementById("text").style.opacity="1";
+    },800);
+
+    setTimeout(()=>{
+        document.getElementById("replay").style.display="block";
+    },7000);
+
+    setInterval(()=>{
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(15+Math.random()*20)+"px";
+        heart.style.animationDuration=(3+Math.random()*2)+"s";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{heart.remove();},5000);
+    },300);
+}
+</script>
+
+</body>
+</html>
